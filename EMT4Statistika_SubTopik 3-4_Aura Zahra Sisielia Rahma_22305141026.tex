@@ -1,0 +1,884 @@
+\documentclass{article}
+
+\usepackage{eumat}
+
+\begin{document}
+\begin{eulernotebook}
+\begin{eulercomment}
+Nama  : Aura Zahra Sisielia Rahma\\
+NIM   : 22305141026\\
+Kelas : Matematika B
+
+\begin{eulercomment}
+\eulerheading{File Input dan Output (Membaca dan Menulis Data) }
+\begin{eulercomment}
+Kali ini kita akan belajar bagaimana cara mengimpor matriks data dari
+sumber lain ke EMT. Fungsi sederhana adalah writematrix() dan
+readmatrix().
+
+-Fungsi writematrix() digunakan untuk menulis matriks ke dalam file
+teks. Ini memungkinkan Anda untuk menyimpan data matriks dalam format
+yang dapat dibaca oleh program lain atau untuk tujuan penyimpanan.
+
+-Fungsi readmatrix() digunakan untuk membaca data matriks dari file
+teks. Ini memungkinkan Anda untuk mengambil data matriks yang telah
+disimpan sebelumnya dalam file teks.
+
+
+Ditunjukan cara membaca dan menulis vektor real ke dalam file.
+\end{eulercomment}
+\begin{eulerprompt}
+>a=random(1,100)
+\end{eulerprompt}
+\begin{euleroutput}
+  [0.655416,  0.200995,  0.893622,  0.281887,  0.525,  0.314127,
+  0.444616,  0.299474,  0.28269,  0.883227,  0.270906,  0.704419,
+  0.217693,  0.445363,  0.308411,  0.914541,  0.193585,  0.463387,
+  0.095153,  0.595017,  0.431184,  0.72868,  0.465164,  0.323032,
+  0.525184,  0.502255,  0.168603,  0.262253,  0.866587,  0.536137,
+  0.493453,  0.601344,  0.659461,  0.967468,  0.193151,  0.935921,
+  0.0728753,  0.988966,  0.0104376,  0.356626,  0.52143,  0.428893,
+  0.168134,  0.182742,  0.288048,  0.750042,  0.472935,  0.324407,
+  0.340388,  0.195494,  0.44607,  0.216545,  0.598477,  0.729271,
+  0.950019,  0.791698,  0.418637,  0.469159,  0.898763,  0.388543,
+  0.674114,  0.0752676,  0.854693,  0.123222,  0.205006,  0.465049,
+  0.0281269,  0.60809,  0.10999,  0.615836,  0.217391,  0.962872,
+  0.842267,  0.328758,  0.561146,  0.918802,  0.997492,  0.473212,
+  0.185709,  0.421585,  0.720843,  0.247804,  0.834083,  0.44372,
+  0.371866,  0.775718,  0.37468,  0.224336,  0.0102885,  0.164816,
+  0.356866,  0.408866,  0.350091,  0.347412,  0.161257,  0.588325,
+  0.83884,  0.906718,  0.916402,  0.0960726]
+\end{euleroutput}
+\begin{eulerprompt}
+>mean(a), dev(a)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.474656416958
+  0.273269044817
+\end{euleroutput}
+\begin{eulercomment}
+Seperti yang sudah kita ketahui mean() disini berarti rata-rata.\\
+Rumus mean (rata-rata) adalah
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+Mean = \frac{sum(data)}{len(data)}
+\]
+\end{eulerformula}
+\begin{eulercomment}
+atau jumlah data dibagi banyak data.
+
+Sedangkan dev() merupakan standartdeviasinya.\\
+Rumus standart deviasi adalah
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+deviasi= [(x-mean)^{2} for x in data]
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+variasi= \frac{sum(deviasi)}{len(data)}
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+standard deviasi=\sqrt{variasi}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>filename="test.dat";
+\end{eulerprompt}
+\begin{eulercomment}
+Sekarang kita menulis vektor kolom a' ke file. Ini menghasilkan satu
+nomor di setiap baris file.
+\end{eulercomment}
+\begin{eulerprompt}
+>writematrix(a',filename);
+\end{eulerprompt}
+\begin{eulercomment}
+Untuk membaca data, kami menggunakan readmatrix().
+\end{eulercomment}
+\begin{eulerprompt}
+>a=readmatrix(filename)';
+\end{eulerprompt}
+\begin{eulercomment}
+Dan hapus filenya.
+\end{eulercomment}
+\begin{eulerprompt}
+>fileremove(filename);
+>mean(a), dev(a),
+\end{eulerprompt}
+\begin{euleroutput}
+  0.474656416958
+  0.273269044817
+\end{euleroutput}
+\begin{eulercomment}
+Contoh lain
+\end{eulercomment}
+\begin{eulerprompt}
+>b= random(1,10)
+\end{eulerprompt}
+\begin{euleroutput}
+  [0.978964,  0.0367821,  0.191109,  0.642479,  0.233536,  0.0910807,
+  0.899334,  0.983636,  0.21102,  0.552777]
+\end{euleroutput}
+\begin{eulerprompt}
+>mean(b), dev(b),
+\end{eulerprompt}
+\begin{euleroutput}
+  0.482071750833
+  0.376292059882
+\end{euleroutput}
+\begin{eulerprompt}
+>writematrix(b',filename);
+>b=readmatrix(filename)';
+>fileremove(filename);
+>mean(b), dev(b),
+\end{eulerprompt}
+\begin{euleroutput}
+  0.482071750833
+  0.376292059882
+\end{euleroutput}
+\begin{eulerprompt}
+>c=[2,4,6]; mean(c), dev(c), median(c)
+\end{eulerprompt}
+\begin{euleroutput}
+  4
+  2
+  4
+\end{euleroutput}
+\begin{eulercomment}
+Penjelasan:
+
+Mencari rata-ratanya\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+Rata-rata= \frac{2+4+6}{3}
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+= \frac{12}{3}
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+= 4
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Lalu mencari standart deviasinya
+
+-Deviasi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+(2-4)^{2} = 4
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+(4-4)^{2} = 0
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+(6-4)^{2} = 4
+\]
+\end{eulerformula}
+\begin{eulercomment}
+-Variasi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+variasi = \frac{4+0+4}{3}
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+= 2.6
+\]
+\end{eulerformula}
+\begin{eulercomment}
+-Standart deviasi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+standar deviasi= \sqrt{2.6}
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+= 1.632
+\]
+\end{eulerformula}
+\begin{eulercomment}
+dibulatkan\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+= 2
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+> 
+>d=random(100)
+\end{eulerprompt}
+\begin{euleroutput}
+  [0.494142,  0.579784,  0.811875,  0.983877,  0.262956,  0.993804,
+  0.901832,  0.240796,  0.635967,  0.151086,  0.251504,  0.333971,
+  0.761139,  0.410119,  0.5587,  0.711308,  0.0843473,  0.320241,
+  0.353311,  0.433255,  0.424885,  0.022074,  0.838671,  0.42851,
+  0.135752,  0.210168,  0.793448,  0.636726,  0.264161,  0.51778,
+  0.435232,  0.421074,  0.670718,  0.827047,  0.762061,  0.473647,
+  0.770606,  0.590967,  0.0638119,  0.165065,  0.796324,  0.718715,
+  0.486728,  0.270117,  0.430124,  0.172917,  0.0976369,  0.99418,
+  0.00359736,  0.647971,  0.52536,  0.933253,  0.748021,  0.763355,
+  0.571752,  0.275951,  0.280553,  0.0664734,  0.221311,  0.0372897,
+  0.450195,  0.487021,  0.521941,  0.703232,  0.384655,  0.679077,
+  0.124481,  0.489252,  0.361611,  0.0303537,  0.572118,  0.245745,
+  0.197327,  0.265461,  0.791105,  0.276179,  0.908966,  0.641266,
+  0.602455,  0.704627,  0.0212425,  0.465424,  0.181763,  0.142573,
+  0.206751,  0.853878,  0.944496,  0.142014,  0.213859,  0.818767,
+  0.532792,  0.153921,  0.450978,  0.844721,  0.550462,  0.333096,
+  0.434177,  0.904402,  0.354328,  0.373107]
+\end{euleroutput}
+\begin{eulerprompt}
+>filename="aura.dat";
+>d
+\end{eulerprompt}
+\begin{euleroutput}
+  [0.494142,  0.579784,  0.811875,  0.983877,  0.262956,  0.993804,
+  0.901832,  0.240796,  0.635967,  0.151086,  0.251504,  0.333971,
+  0.761139,  0.410119,  0.5587,  0.711308,  0.0843473,  0.320241,
+  0.353311,  0.433255,  0.424885,  0.022074,  0.838671,  0.42851,
+  0.135752,  0.210168,  0.793448,  0.636726,  0.264161,  0.51778,
+  0.435232,  0.421074,  0.670718,  0.827047,  0.762061,  0.473647,
+  0.770606,  0.590967,  0.0638119,  0.165065,  0.796324,  0.718715,
+  0.486728,  0.270117,  0.430124,  0.172917,  0.0976369,  0.99418,
+  0.00359736,  0.647971,  0.52536,  0.933253,  0.748021,  0.763355,
+  0.571752,  0.275951,  0.280553,  0.0664734,  0.221311,  0.0372897,
+  0.450195,  0.487021,  0.521941,  0.703232,  0.384655,  0.679077,
+  0.124481,  0.489252,  0.361611,  0.0303537,  0.572118,  0.245745,
+  0.197327,  0.265461,  0.791105,  0.276179,  0.908966,  0.641266,
+  0.602455,  0.704627,  0.0212425,  0.465424,  0.181763,  0.142573,
+  0.206751,  0.853878,  0.944496,  0.142014,  0.213859,  0.818767,
+  0.532792,  0.153921,  0.450978,  0.844721,  0.550462,  0.333096,
+  0.434177,  0.904402,  0.354328,  0.373107]
+\end{euleroutput}
+\begin{eulerprompt}
+>mean(d), dev(d), median(d)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.471278663938
+  0.2714826998
+  0.450586280925
+\end{euleroutput}
+\begin{eulercomment}
+Fungsi writematrix() atau writetable() dapat dikonfigurasi untuk
+bahasa lain.
+
+Misalnya, jika Anda memiliki sistem Indonesia (titik desimal dengan
+koma), Excel Anda memerlukan nilai dengan koma desimal yang dipisahkan
+oleh titik koma dalam file csv (defaultnya adalah nilai yang
+dipisahkan koma). File "test.csv" berikut akan muncul di folder
+cuurent Anda.
+\end{eulercomment}
+\begin{eulerprompt}
+>filename="text.csv"; ...
+>writematrix(random(5,3),file=filename,separator=",");
+\end{eulerprompt}
+\begin{eulercomment}
+Anda sekarang dapat membuka file ini dengan Excel Indonesia secara
+langsung.
+\end{eulercomment}
+\begin{eulerprompt}
+>fileremove(filename);
+\end{eulerprompt}
+\begin{eulercomment}
+Terkadang kita memiliki string dengan token seperti berikut ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>s1:="f m m f m m m f f f m m f"; ...
+>s2:="f f f m m f f";
+\end{eulerprompt}
+\begin{eulercomment}
+Untuk tokenize ini, kami mendefinisikan vektor token.
+\end{eulercomment}
+\begin{eulerprompt}
+>tok:=["f","m"]
+\end{eulerprompt}
+\begin{euleroutput}
+  f
+  m
+\end{euleroutput}
+\begin{eulercomment}
+Kemudian kita dapat menghitung berapa kali setiap token muncul dalam
+string, dan memasukkan hasilnya ke dalam tabel.
+\end{eulercomment}
+\begin{eulerprompt}
+> M:=getmultiplicities(tok,strtokens(s1))_ ...
+>getmultiplicities(tok,strtokens(s2));
+\end{eulerprompt}
+\begin{eulercomment}
+Tulis tabel dengan header token.
+\end{eulercomment}
+\begin{eulerprompt}
+>writetable(M,labc=tok,labr=1:2,wc=6)
+\end{eulerprompt}
+\begin{euleroutput}
+             f     m
+       1     6     7
+       2     5     2
+\end{euleroutput}
+\begin{eulercomment}
+Untuk statistika, EMT dapat membaca dan menulis tabel.
+\end{eulercomment}
+\begin{eulerprompt}
+>file="test.dat"; open(file,"w"); ...
+>writeln("A,B,C"); writematrix(random(3,3)); ...
+>close();
+\end{eulerprompt}
+\begin{eulercomment}
+Filenya akan terlihat seperti ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>printfile(file)
+\end{eulerprompt}
+\begin{euleroutput}
+  A,B,C
+  0.1487056648544881,0.0006365920668981623,0.5149201954566951
+  0.7031180876144383,0.5381325719604588,0.7812141493909074
+  0.9499312870875743,0.4223447897933922,0.6092230024672836
+  
+\end{euleroutput}
+\begin{eulercomment}
+Fungsi readtable() dalam bentuknya yang paling sederhana dapat membaca
+ini dan mengembalikan kumpulan nilai dan baris judul.
+\end{eulercomment}
+\begin{eulerprompt}
+>L=readtable(file,>list);
+\end{eulerprompt}
+\begin{eulercomment}
+Koleksi ini dapat dicetak dengan writetable() ke notebook, atau ke
+file.
+\end{eulercomment}
+\begin{eulerprompt}
+>writetable(L,wc=10 ,dc=5)
+\end{eulerprompt}
+\begin{euleroutput}
+           A         B         C
+     0.14871   0.00064   0.51492
+     0.70312   0.53813   0.78121
+     0.94993   0.42234   0.60922
+\end{euleroutput}
+\begin{eulercomment}
+Matriks nilai adalah elemen pertama dari L. Perhatikan bahwa mean()
+dalam EMT menghitung nilai rata-rata dari baris matriks.
+\end{eulercomment}
+\begin{eulerprompt}
+>mean(L[1])
+\end{eulerprompt}
+\begin{euleroutput}
+       0.221421 
+       0.674155 
+         0.6605 
+\end{euleroutput}
+\eulerheading{File CSV}
+\begin{eulercomment}
+Pertama, mari kita menulis matriks ke dalam file. Untuk output, kami
+membuat file di direktori kerja saat ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>file="test.csv"; ...
+>M=random(4,4); writematrix(M,file);
+\end{eulerprompt}
+\begin{eulercomment}
+Berikut adalah isi dari file ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>printfile(file)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.9539904492391218,0.3242501283815414,0.3509798221445106,0.4135727822564945
+  0.8170264863629133,0.2966076923588541,0.8654591047968827,0.8838164965270098
+  0.271055532172192,0.2311736562521014,0.3945122601154922,0.780445814755696
+  0.5812301348916076,0.5930523557632464,0.2462355447607214,0.4554301820283595
+  
+\end{euleroutput}
+\begin{eulercomment}
+CVS ini dapat dibuka pada sistem bahasa Inggris ke Excel dengan klik
+dua kali. Jika Anda mendapatkan file seperti itu di sistem Jerman,
+Anda perlu mengimpor data ke Excel dengan memperhatikan titik desimal.
+
+Tetapi titik desimal juga merupakan format default untuk EMT. Anda
+dapat membaca matriks dari file dengan readmatrix().
+\end{eulercomment}
+\begin{eulerprompt}
+>readmatrix(file)
+\end{eulerprompt}
+\begin{euleroutput}
+        0.95399       0.32425       0.35098      0.413573 
+       0.817026      0.296608      0.865459      0.883816 
+       0.271056      0.231174      0.394512      0.780446 
+        0.58123      0.593052      0.246236       0.45543 
+\end{euleroutput}
+\begin{eulercomment}
+Dimungkinkan untuk menulis beberapa matriks ke satu file. Perintah
+open() dapat membuka file untuk ditulis dengan parameter "w".
+Standarnya adalah "r" untuk membaca.
+\end{eulercomment}
+\begin{eulerprompt}
+>open(file,"w"); writematrix(M); writematrix(M'); close();
+\end{eulerprompt}
+\begin{eulercomment}
+Matriks dipisahkan oleh garis kosong. Untuk membaca matriks, buka file\\
+dan panggil readmatrix() beberapa kali.
+\end{eulercomment}
+\begin{eulerprompt}
+>open(file); A=readmatrix(); B=readmatrix(); A==B, close();
+\end{eulerprompt}
+\begin{euleroutput}
+              1             0             0             0 
+              0             1             0             0 
+              0             0             1             0 
+              0             0             0             1 
+\end{euleroutput}
+\begin{eulercomment}
+Di Excel atau spreadsheet serupa, Anda dapat mengekspor matriks
+sebagai CSV (nilai yang dipisahkan koma). Di Excel 2007, gunakan
+"simpan sebagai" dan "format lain", lalu pilih "CSV". Pastikan, tabel
+saat ini hanya berisi data yang ingin Anda ekspor.
+
+Berikut adalah contoh.
+\end{eulercomment}
+\begin{eulerprompt}
+>printfile("excel-data.csv")
+\end{eulerprompt}
+\begin{euleroutput}
+  0;1000;1000
+  1;1051,271096;1072,508181
+  2;1105,170918;1150,273799
+  3;1161,834243;1233,67806
+  4;1221,402758;1323,129812
+  5;1284,025417;1419,067549
+  6;1349,858808;1521,961556
+  7;1419,067549;1632,31622
+  8;1491,824698;1750,6725
+  9;1568,312185;1877,610579
+  10;1648,721271;2013,752707
+\end{euleroutput}
+\begin{eulercomment}
+Seperti yang Anda lihat, sistem Jerman saya menggunakan titik koma
+sebagai pemisah dan koma desimal. Anda dapat mengubah ini di
+pengaturan sistem atau di Excel, tetapi tidak perlu membaca matriks ke
+dalam EMT.
+
+Cara termudah untuk membaca ini ke dalam Euler adalah readmatrix().
+Semua koma diganti dengan titik dengan parameter \textgreater{}comma. Untuk CSV
+bahasa Inggris, cukup abaikan parameter ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>M=readmatrix("excel-data.csv",>comma)
+\end{eulerprompt}
+\begin{euleroutput}
+              0          1000          1000 
+              1       1051.27       1072.51 
+              2       1105.17       1150.27 
+              3       1161.83       1233.68 
+              4        1221.4       1323.13 
+              5       1284.03       1419.07 
+              6       1349.86       1521.96 
+              7       1419.07       1632.32 
+              8       1491.82       1750.67 
+              9       1568.31       1877.61 
+             10       1648.72       2013.75 
+\end{euleroutput}
+\begin{eulercomment}
+Mari kita plot ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(M'[1],M'[2:3],>points,color=[red,green]'):
+\end{eulerprompt}
+\eulerimg{27}{images/EMT4Statistika_SubTopik 3-4_Aura Zahra Sisielia Rahma_22305141026-005.png}
+\begin{eulercomment}
+Ada cara yang lebih mendasar untuk membaca data dari file. Anda dapat
+membuka file dan membaca angka baris demi baris. Fungsi
+getvectorline() akan membaca angka dari baris data. Secara default, ia
+mengharapkan titik desimal. Tapi itu juga bisa menggunakan koma
+desimal, jika Anda memanggil setdecimaldot(",") sebelum Anda
+menggunakan fungsi ini.
+
+Fungsi berikut adalah contoh untuk ini. Ini akan berhenti di akhir
+file atau baris kosong.
+\end{eulercomment}
+\begin{eulerprompt}
+>function myload (file) ...
+\end{eulerprompt}
+\begin{eulerudf}
+  open(file);
+  M=[];
+  repeat
+     until eof();
+     v=getvectorline(3);
+     if length(v)>0 then M=M_v; else break; endif;
+  end;
+  return M;
+  close(file);
+  endfunction
+\end{eulerudf}
+\begin{eulerprompt}
+>myload(file)
+\end{eulerprompt}
+\begin{euleroutput}
+        0.95399       0.32425       0.35098      0.413573 
+       0.817026      0.296608      0.865459      0.883816 
+       0.271056      0.231174      0.394512      0.780446 
+        0.58123      0.593052      0.246236       0.45543 
+\end{euleroutput}
+\begin{eulercomment}
+Dimungkinkan juga untuk membaca semua angka dalam file itu dengan
+getvector().
+\end{eulercomment}
+\begin{eulerprompt}
+> open(file); v=getvector(10000); close(); redim(v[1:9],3,3)
+\end{eulerprompt}
+\begin{euleroutput}
+        0.95399       0.32425       0.35098 
+       0.413573      0.817026      0.296608 
+       0.865459      0.883816      0.271056 
+\end{euleroutput}
+\begin{eulercomment}
+Jadi sangat mudah untuk menyimpan vektor nilai, satu nilai di setiap
+baris dan membaca kembali vektor ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>v=random(1000); mean(v)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.510431026213
+\end{euleroutput}
+\begin{eulerprompt}
+>writematrix(v',file); mean(readmatrix(file)')
+\end{eulerprompt}
+\begin{euleroutput}
+  0.510431026213
+\end{euleroutput}
+\begin{eulercomment}
+Contoh lain\\
+Disini saya menggunakan file csv yang lain yaitu mtcars
+\end{eulercomment}
+\begin{eulerprompt}
+>fileku="mtcars.csv"; ...
+>N=random(3,3); writematrix(N,fileku);
+>printfile(fileku)
+\end{eulerprompt}
+\begin{euleroutput}
+  0.09719871136447902,0.4578649713278388,0.7048448053709271
+  0.2429406296694435,0.1932052319973915,0.2449390659201055
+  0.4284328615371106,0.2442040079074635,0.8627321782206349
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>readmatrix(fileku)
+\end{eulerprompt}
+\begin{euleroutput}
+      0.0971987      0.457865      0.704845 
+       0.242941      0.193205      0.244939 
+       0.428433      0.244204      0.862732 
+\end{euleroutput}
+\begin{eulerprompt}
+>mean(N[1])
+\end{eulerprompt}
+\begin{euleroutput}
+  0.419969496021
+\end{euleroutput}
+\eulerheading{Berlatih Membaca dan Menulis File}
+\begin{eulercomment}
+Menggunakan file yang disediakan dibesmart
+\end{eulercomment}
+\begin{eulerprompt}
+>filename="table.dat";
+>printfile(filename)
+\end{eulerprompt}
+\begin{euleroutput}
+  Person Sex Age Titanic Evaluation Tip Problem
+  1 m 30 n . 1.80 n
+  2 f 23 y g 1.80 n
+  3 f 26 y g 1.80 y
+  4 m 33 n . 2.80 n
+  5 m 37 n . 1.80 n
+  6 m 28 y g 2.80 y
+  7 f 31 y vg 2.80 n
+  8 m 23 n . 0.80 n
+  9 f 24 y vg 1.80 y
+  10 m 26 n . 1.80 n
+  11 f 23 y vg 1.80 y
+  12 m 32 y g 1.80 n
+  13 m 29 y vg 1.80 y
+  14 f 25 y g 1.80 y
+  15 f 31 y g 0.80 n
+  16 m 26 y g 2.80 n
+  17 m 37 n . 3.80 n
+  18 m 38 y g . n
+  19 f 29 n . 3.80 n
+  20 f 28 y vg 1.80 n
+  21 f 28 y m 2.80 y
+  22 f 28 y vg 1.80 y
+  23 f 38 y g 2.80 n
+  24 f 27 y m 1.80 y
+  25 m 27 n . 2.80 y
+\end{euleroutput}
+\begin{eulercomment}
+2. 
+\end{eulercomment}
+\begin{eulerprompt}
+>filename="table1.dat";
+>printfile(filename,6)
+\end{eulerprompt}
+\begin{euleroutput}
+  Person Sex Age Mother Father Siblings
+  1 m 29 58 61 1
+  2 f 26 53 54 2
+  3 m 24 49 55 1
+  4 f 25 56 63 3
+  5 f 25 49 53 0
+\end{euleroutput}
+\begin{eulercomment}
+3.
+\end{eulercomment}
+\begin{eulerprompt}
+>fileku="GOOG.csv";
+>printfile(fileku)
+\end{eulerprompt}
+\begin{euleroutput}
+  Date,Open,High,Low,Close,Adj Close,Volume
+  2019-11-04,1276.449951,1323.739990,1276.354980,1311.369995,1311.369995,7217800
+  2019-11-11,1303.180054,1334.880005,1293.510010,1334.869995,1334.869995,5900600
+  2019-11-18,1332.219971,1335.529053,1291.150024,1295.339966,1295.339966,6446400
+  2019-11-25,1299.180054,1318.359985,1298.130005,1304.959961,1304.959961,3688500
+  2019-12-02,1301.000000,1344.000000,1279.000000,1340.619995,1340.619995,6719700
+  2019-12-09,1338.040039,1359.449951,1336.040039,1347.829956,1347.829956,6129400
+  2019-12-16,1356.500000,1365.000000,1348.984985,1349.589966,1349.589966,9558800
+  2019-12-23,1355.869995,1364.530029,1342.780029,1351.890015,1351.890015,2936500
+  2019-12-30,1350.000000,1372.500000,1329.084961,1360.660034,1360.660034,4605700
+  2020-01-06,1350.000000,1434.928955,1350.000000,1429.729980,1429.729980,8084600
+  2020-01-13,1436.130005,1481.295044,1426.020020,1480.390015,1480.390015,8063800
+  2020-01-20,1479.119995,1503.213989,1465.250000,1466.709961,1466.709961,6783300
+  2020-01-27,1431.000000,1470.130005,1421.199951,1434.229980,1434.229980,8166900
+  2020-02-03,1462.000000,1490.000000,1426.300049,1479.229980,1479.229980,11826100
+  2020-02-10,1474.319946,1529.630005,1474.319946,1520.739990,1520.739990,6059400
+  2020-02-17,1515.000000,1532.105957,1480.439941,1485.109985,1485.109985,4898300
+  2020-02-24,1426.109985,1438.140015,1271.000000,1339.329956,1339.329956,14316700
+  2020-03-02,1351.609985,1410.150024,1261.050049,1298.410034,1298.410034,11969000
+  2020-03-09,1205.300049,1281.150024,1113.300049,1219.729980,1219.729980,16512100
+  2020-03-16,1096.000000,1157.969971,1037.280029,1072.319946,1072.319946,19600200
+  2020-03-23,1061.319946,1169.969971,1013.536011,1110.709961,1110.709961,18250300
+  2020-03-30,1125.040039,1175.310059,1079.810059,1097.880005,1097.880005,11683000
+  2020-04-06,1138.000000,1225.569946,1130.939941,1211.449951,1211.449951,9202500
+  2020-04-13,1209.180054,1294.430054,1187.598022,1283.250000,1283.250000,10349000
+  2020-04-20,1271.000000,1293.310059,1209.709961,1279.310059,1279.310059,9148200
+  2020-04-27,1296.000000,1359.989990,1232.199951,1320.609985,1320.609985,13086900
+  2020-05-04,1308.229980,1398.760010,1299.000000,1388.369995,1388.369995,7156600
+  2020-05-11,1378.280029,1416.530029,1323.910034,1373.189941,1373.189941,7924600
+  2020-05-18,1361.750000,1415.489990,1354.250000,1410.420044,1410.420044,7454400
+  2020-05-25,1437.270020,1441.000000,1391.290039,1428.920044,1428.920044,7276700
+  2020-06-01,1418.390015,1446.552002,1404.729980,1438.390015,1438.390015,6970600
+  2020-06-08,1422.339966,1474.259033,1386.020020,1413.180054,1413.180054,8274100
+  2020-06-15,1390.800049,1460.000000,1387.920044,1431.719971,1431.719971,9501200
+  2020-06-22,1429.000000,1475.941040,1351.989990,1359.900024,1359.900024,10226400
+  2020-06-29,1358.180054,1482.949951,1347.010010,1464.699951,1464.699951,7486900
+  2020-07-06,1480.060059,1543.829956,1472.859985,1541.739990,1541.739990,7551500
+  2020-07-13,1550.000000,1577.131958,1483.500000,1515.550049,1515.550049,8018100
+  2020-07-20,1515.260010,1586.989990,1488.400024,1511.869995,1511.869995,6879500
+  2020-07-27,1515.599976,1540.969971,1454.030029,1482.959961,1482.959961,9166000
+  2020-08-03,1486.640015,1516.844971,1458.650024,1494.489990,1494.489990,9785200
+  2020-08-10,1487.180054,1537.250000,1473.079956,1507.729980,1507.729980,6991400
+  2020-08-17,1514.670044,1597.719971,1507.969971,1580.420044,1580.420044,8219400
+  2020-08-24,1593.979980,1659.219971,1580.569946,1644.410034,1644.410034,11011800
+  2020-08-31,1647.890015,1733.180054,1547.613037,1591.040039,1591.040039,11877700
+  2020-09-07,1533.510010,1584.081055,1497.359985,1520.719971,1520.719971,7601300
+  2020-09-14,1539.005005,1564.000000,1437.130005,1459.989990,1459.989990,9323100
+  2020-09-21,1440.060059,1469.520020,1406.550049,1444.959961,1444.959961,8902600
+  2020-09-28,1474.209961,1499.040039,1449.301025,1458.420044,1458.420044,7750300
+  2020-10-05,1466.209961,1516.520020,1436.000000,1515.219971,1515.219971,6728000
+  2020-10-12,1543.000000,1593.859985,1532.569946,1573.010010,1573.010010,8989300
+  2020-10-19,1580.459961,1642.359985,1525.670044,1641.000000,1641.000000,9226500
+  2020-10-26,1625.010010,1687.000000,1514.619995,1621.010010,1621.010010,11248500
+  2020-11-02,null,null,null,null,null,null
+  2020-11-02,1628.160034,1660.674927,1627.652466,1638.349976,1638.349976,1278888
+\end{euleroutput}
+\begin{eulercomment}
+4
+\end{eulercomment}
+\begin{eulerprompt}
+>filename="sample.csv";
+>printfile(filename)
+\end{eulerprompt}
+\begin{euleroutput}
+  female,read,write,math,hon,femalexmath
+  0,57,52,41,0,0
+  1,68,59,53,0,53
+  0,44,33,54,0,0
+  0,63,44,47,0,0
+  0,47,52,57,0,0
+  0,44,52,51,0,0
+  0,50,59,42,0,0
+  0,34,46,45,0,0
+  0,63,57,54,0,0
+  0,57,55,52,0,0
+  0,60,46,51,0,0
+  0,57,65,51,1,0
+  0,73,60,71,0,0
+  0,54,63,57,1,0
+  0,45,57,50,0,0
+  0,42,49,43,0,0
+  0,47,52,51,0,0
+  0,57,57,60,0,0
+  0,68,65,62,1,0
+  0,55,39,57,0,0
+  0,63,49,35,0,0
+  0,63,63,75,1,0
+  0,50,40,45,0,0
+  0,60,52,57,0,0
+  0,37,44,45,0,0
+  0,34,37,46,0,0
+  0,65,65,66,1,0
+  0,47,57,57,0,0
+  0,44,38,49,0,0
+  0,52,44,49,0,0
+  0,42,31,57,0,0
+  0,76,52,64,0,0
+  0,65,67,63,1,0
+  0,42,41,57,0,0
+  0,52,59,50,0,0
+  0,60,65,58,1,0
+  0,68,54,75,0,0
+  0,65,62,68,1,0
+  0,47,31,44,0,0
+  0,39,31,40,0,0
+  0,47,47,41,0,0
+  0,55,59,62,0,0
+  0,52,54,57,0,0
+  0,42,41,43,0,0
+  0,65,65,48,1,0
+  0,55,59,63,0,0
+  0,50,40,39,0,0
+  0,65,59,70,0,0
+  0,47,59,63,0,0
+  0,57,54,59,0,0
+  0,53,61,61,1,0
+  0,39,33,38,0,0
+  0,44,44,61,0,0
+  0,63,59,49,0,0
+  0,73,62,73,1,0
+  0,39,39,44,0,0
+  0,37,37,42,0,0
+  0,42,39,39,0,0
+  0,63,57,55,0,0
+  0,48,49,52,0,0
+  0,50,46,45,0,0
+  0,47,62,61,1,0
+  0,44,44,39,0,0
+  0,34,33,41,0,0
+  0,50,42,50,0,0
+  0,44,41,40,0,0
+  0,60,54,60,0,0
+  0,47,39,47,0,0
+  0,63,43,59,0,0
+  0,50,33,49,0,0
+  0,44,44,46,0,0
+  0,60,54,58,0,0
+  0,73,67,71,1,0
+  0,68,59,58,0,0
+  0,55,45,46,0,0
+  0,47,40,43,0,0
+  0,55,61,54,1,0
+  0,68,59,56,0,0
+  0,31,36,46,0,0
+  0,47,41,54,0,0
+  0,63,59,57,0,0
+  0,36,49,54,0,0
+  0,68,59,71,0,0
+  0,63,65,48,1,0
+  0,55,41,40,0,0
+  0,55,62,64,1,0
+  0,52,41,51,0,0
+  0,34,49,39,0,0
+  0,50,31,40,0,0
+  0,55,49,61,0,0
+  0,52,62,66,1,0
+  0,63,49,49,0,0
+  1,68,62,65,1,65
+  1,39,44,52,0,52
+  1,44,44,46,0,46
+  1,50,62,61,1,61
+  1,71,65,72,1,72
+  1,63,65,71,1,71
+  1,34,44,40,0,40
+\end{euleroutput}
+\begin{eulerprompt}
+>tok:=["female","read"]
+\end{eulerprompt}
+\begin{euleroutput}
+  female
+  read
+\end{euleroutput}
+\begin{eulerprompt}
+>filename="mtcars.csv"; ...
+>a = random(3,3), writematrix(a, filename);
+\end{eulerprompt}
+\begin{euleroutput}
+       0.421434      0.128308      0.127171 
+       0.679044      0.290959     0.0125867 
+      0.0203728     0.0439462      0.404923 
+\end{euleroutput}
+\begin{eulerprompt}
+>mean(a[1])
+\end{eulerprompt}
+\begin{euleroutput}
+  0.225637223965
+\end{euleroutput}
+\begin{eulerprompt}
+>a=random(3,3)
+\end{eulerprompt}
+\begin{euleroutput}
+        0.21687       0.87946      0.727787 
+       0.224946      0.514377      0.461146 
+        0.48798       0.24778     0.0876318 
+\end{euleroutput}
+\eulerheading{Membaca dari Web}
+\begin{eulercomment}
+Situs web atau file dengan URL dapat dibuka di EMT dan dapat dibaca
+baris demi baris.
+
+Dalam contoh, kami membaca versi saat ini dari situs EMT. Kami
+menggunakan ekspresi reguler untuk memindai "Versi ..." dalam sebuah
+judul.
+\end{eulercomment}
+\begin{eulerprompt}
+>function readversion() ...
+\end{eulerprompt}
+\begin{eulerudf}
+  urlopen("http://www.euler-math-toolbox.de/Programs/Changes.html");
+  repeat
+    until urleof();
+    s=urlgetline();
+    k=strfind(s,"Version ",1);
+    if k>0 then substring(s,k,strfind(s,"<",k)-1), break; endif;
+  end;
+  urlclose();
+  endfunction
+\end{eulerudf}
+\begin{eulerprompt}
+>readversion 
+\end{eulerprompt}
+\begin{euleroutput}
+  Version 2022-05-18
+\end{euleroutput}
+\end{eulernotebook}
+\end{document}
